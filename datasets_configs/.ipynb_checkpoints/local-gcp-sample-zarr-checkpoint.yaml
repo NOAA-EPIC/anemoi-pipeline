@@ -1,0 +1,13 @@
+dates:
+  start: 2020-12-31T00:00
+  end: 2021-02-01T23:00
+  frequency: 6h
+
+input:
+  xarray-zarr:
+    url: "./sample_data/gcp_era5_subset.zarr"
+    param: [2m_temperature,
+    10m_u_component_of_wind,
+    geopotential,
+    10m_v_component_of_wind,
+    surface_pressure]

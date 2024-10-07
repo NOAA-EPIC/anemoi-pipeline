@@ -1,0 +1,15 @@
+dates:
+  start: 2021-12-31T09:00:00
+  end: 2021-12-31T10:00:00
+  frequency: 1h
+
+input:
+  xarray-zarr:
+    url: "gs://gcp-public-data-arco-era5/ar/1959-2022-1h-360x181_equiangular_with_poles_conservative.zarr"
+    param: [2m_temperature,
+    10m_u_component_of_wind,
+    geopotential,
+    10m_v_component_of_wind,
+    surface_pressure]
+
+

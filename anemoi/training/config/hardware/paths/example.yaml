@@ -1,0 +1,12 @@
+data: ??? # Location of where the anemoi-formatted zarr is saved within.
+grids: ??? 
+output: ??? # Location of where to save the training log.
+logs:
+  base: ${hardware.paths.output}logs/
+  wandb: ${hardware.paths.logs.base}
+  mlflow: ${hardware.paths.logs.base}mlflow/
+  tensorboard: ${hardware.paths.logs.base}tensorboard/
+checkpoints: ${hardware.paths.output}checkpoint/
+plots: ${hardware.paths.output}plots/
+profiler: ${hardware.paths.output}profiler/
+graph: ${hardware.paths.output}graphs/
