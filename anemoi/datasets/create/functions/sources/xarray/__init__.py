@@ -27,7 +27,9 @@ def check(what, ds, paths, **kwargs):
             count *= len(v)
 
     if len(ds) != count:
-        raise ValueError(f"Expected {count} fields, got {len(ds)} (kwargs={kwargs}, {what}s={paths})")
+        raise ValueError(
+            f"Expected {count} fields, got {len(ds)} (kwargs={kwargs}, {what}s={paths})"
+        )
 
 
 def load_one(emoji, context, dates, dataset, options={}, flavour=None, **kwargs):
@@ -45,7 +47,10 @@ def load_one(emoji, context, dates, dataset, options={}, flavour=None, **kwargs)
     context.trace(emoji, dataset, options, kwargs)
 
     if isinstance(dataset, str) and ".zarr" in dataset:
-        data = xr.open_zarr(name_to_zarr_store(dataset), **options)
+        data = xr.open_zarr(
+            name_to_zarr_store(dataset), storage_options=dict(token="anon"), **options
+        )
+        data = data.drop_vars(["cftime", "ftime"])
     else:
         data = xr.open_dataset(dataset, **options)
 
@@ -54,7 +59,9 @@ def load_one(emoji, context, dates, dataset, options={}, flavour=None, **kwargs)
     if len(dates) == 0:
         return fs.sel(**kwargs)
     else:
-        result = MultiFieldList([fs.sel(valid_datetime=date, **kwargs) for date in dates])
+        result = MultiFieldList(
+            [fs.sel(valid_datetime=date, **kwargs) for date in dates]
+        )
 
     if len(result) == 0:
         LOG.warning(f"No data found for {dataset} and dates {dates} and {kwargs}")
@@ -75,7 +82,6 @@ def load_one(emoji, context, dates, dataset, options={}, flavour=None, **kwargs)
 
 
 def load_many(emoji, context, dates, pattern, **kwargs):
-
     result = []
 
     for path, dates in iterate_patterns(pattern, dates, **kwargs):

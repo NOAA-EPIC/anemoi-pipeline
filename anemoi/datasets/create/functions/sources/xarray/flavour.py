@@ -31,7 +31,6 @@ LOG = logging.getLogger(__name__)
 
 
 class CoordinateGuesser:
-
     def __init__(self, ds):
         self.ds = ds
         self._cache = {}
@@ -49,7 +48,6 @@ class CoordinateGuesser:
         return self._cache[coord]
 
     def _guess(self, c, coord):
-
         name = c.name
         standard_name = getattr(c, "standard_name", "").lower()
         axis = getattr(c, "axis", "")
@@ -181,7 +179,6 @@ class CoordinateGuesser:
         raise NotImplementedError(f"Cannot establish grid {coordinates}")
 
     def _check_dims(self, variable, x_or_lon, y_or_lat):
-
         x_dims = set(x_or_lon.variable.dims)
         y_dims = set(y_or_lat.variable.dims)
         variable_dims = set(variable.dims)
@@ -231,7 +228,9 @@ class CoordinateGuesser:
         _, unstructured = self._check_dims(variable, x, y)
 
         if x.variable.dims != y.variable.dims:
-            raise ValueError(f"Dimensions do not match {x.name}{x.variable.dims} != {y.name}{y.variable.dims}")
+            raise ValueError(
+                f"Dimensions do not match {x.name}{x.variable.dims} != {y.name}{y.variable.dims}"
+            )
 
         if (x.name, y.name) in self._cache:
             return self._cache[(x.name, y.name)]
@@ -239,7 +238,10 @@ class CoordinateGuesser:
         if (x.name, y.name) in self._cache:
             return self._cache[(x.name, y.name)]
 
-        assert len(x.variable.shape) == len(y.variable.shape), (x.variable.shape, y.variable.shape)
+        assert len(x.variable.shape) == len(y.variable.shape), (
+            x.variable.shape,
+            y.variable.shape,
+        )
 
         grid_mapping = variable.attrs.get("grid_mapping", None)
 
@@ -269,7 +271,9 @@ class CoordinateGuesser:
 
                 if PROBE.intersection(var.attrs.keys()):
                     if candidate:
-                        raise ValueError(f"Multiple candidates for 'grid_mapping': {candidate} and {v}")
+                        raise ValueError(
+                            f"Multiple candidates for 'grid_mapping': {candidate} and {v}"
+                        )
                     candidate = v
 
             if candidate:
@@ -281,7 +285,9 @@ class CoordinateGuesser:
         if grid_mapping is None:
             if "crs" in self.ds[variable].attrs:
                 grid_mapping = self.ds[variable].attrs["crs"]
-                LOG.warning(f"Using CRS {grid_mapping} from variable '{variable.name}' attributes")
+                LOG.warning(
+                    f"Using CRS {grid_mapping} from variable '{variable.name}' attributes"
+                )
 
         if grid_mapping is None:
             if "crs" in self.ds.attrs:
@@ -312,6 +318,9 @@ class DefaultCoordinateGuesser(CoordinateGuesser):
         if name == "longitude":  # WeatherBench
             return LongitudeCoordinate(c)
 
+        if name == "grid_xt":
+            return LongitudeCoordinate(c)
+
     def _is_latitude(self, c, *, axis, name, long_name, standard_name, units):
         if standard_name == "latitude":
             return LatitudeCoordinate(c)
@@ -320,6 +329,9 @@ class DefaultCoordinateGuesser(CoordinateGuesser):
             return LatitudeCoordinate(c)
 
         if name == "latitude":  # WeatherBench
+            return LatitudeCoordinate(c)
+
+        if name == "grid_yt":
             return LatitudeCoordinate(c)
 
     def _is_x(self, c, *, axis, name, long_name, standard_name, units):
@@ -381,6 +393,9 @@ class DefaultCoordinateGuesser(CoordinateGuesser):
         if name == "vertical" and units == "hPa":
             return LevelCoordinate(c, "pl")
 
+        if name == "pfull":
+            return LevelCoordinate(c, "pl")
+
     def _is_number(self, c, *, axis, name, long_name, standard_name, units):
         if name in ("realization", "number"):
             return EnsembleCoordinate(c)
@@ -392,7 +407,6 @@ class FlavourCoordinateGuesser(CoordinateGuesser):
         self.flavour = flavour
 
     def _match(self, c, key, values):
-
         if key not in self.flavour["rules"]:
             return None
 
@@ -440,7 +454,6 @@ class FlavourCoordinateGuesser(CoordinateGuesser):
             return DateCoordinate(c)
 
     def _is_level(self, c, *, axis, name, long_name, standard_name, units):
-
         rule = self._match(c, "level", locals())
         if rule:
             # assert False, rule
