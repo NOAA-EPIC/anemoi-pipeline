@@ -1,7 +1,7 @@
 format: zarr
-resolution: o384 #o96
+resolution: o384 #o96 <================================== ????
 # Time frequency requested from dataset
-frequency: 6h #6h
+frequency: 6h
 # Time step of model (must be multiple of frequency)
 timestep: 6h
 
@@ -21,11 +21,13 @@ forcing:
 - "sdor"
 - "slor"
 - "z"
+
 # features that are only part of the forecast state
 # but are not used as the input to the model
 diagnostic:
 - tp
 - cp
+
 remapped:
 
 normalizer:

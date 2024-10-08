@@ -1,0 +1,2 @@
+[2024-10-08 09:23:47,329][anemoi.training.train.train][INFO] - Run id: 501e457a-7e28-4821-9328-7944e5e245c1
+[2024-10-08 09:23:47,332][anemoi.training.data.datamodule][INFO] - Timeincrement set to 1 for data with frequency, 6h, and timestep, 6h

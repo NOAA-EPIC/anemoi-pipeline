@@ -1,5 +1,5 @@
 data: ??? # Location of where the anemoi-formatted zarr is saved within.
-grids: ??? 
+grids: ???
 output: ??? # Location of where to save the training log.
 logs:
   base: ${hardware.paths.output}logs/

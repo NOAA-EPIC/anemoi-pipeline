@@ -59,7 +59,7 @@ checkpoint:
     num_models_saved: 3 # If set to k, saves the 'last' k model weights in the training.
 
   every_n_epochs:
-    save_frequency: 1
+    save_frequency: 1 #<======================================== ***
     num_models_saved: -1 # If set to -1, all checkpoints are kept ensuring runs can be continued/forked at any point in the training process
 
   every_n_train_steps:

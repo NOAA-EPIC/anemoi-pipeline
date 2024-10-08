@@ -42,6 +42,7 @@ training:
   start: 2020-12-31 00:00:00 #null
   end: 2021-01-20 23:00:00 #2021
   frequency: ${data.frequency}
+  resolution: 96
   drop:  []
 
 validation:
@@ -49,6 +50,7 @@ validation:
   start: 2021-01-21 00:00:00 #2021
   end: 2021-01-24 23:00:00 #2021
   frequency: ${data.frequency}
+  resolution: 96
   drop:  []
 
 test:
@@ -56,3 +58,4 @@ test:
   start: 2021-01-25 00:00:00 #2021
   end: 2021-02-01 23:00:00 #null
   frequency: ${data.frequency}
+  resolution: 96
