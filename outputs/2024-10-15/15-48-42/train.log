@@ -1,0 +1,4 @@
+[2024-10-15 15:48:42,302][anemoi.training.train.train][INFO] - Run id: b1b7800f-08e4-47ec-a671-1aae61ee8631
+[2024-10-15 15:48:42,305][anemoi.training.data.datamodule][INFO] - Timeincrement set to 1 for data with frequency, 6h, and timestep, 6h
+[2024-10-15 15:48:42,322][anemoi.training.diagnostics.callbacks][INFO] - Using defined accumulation colormap for fields: ['tp', 'cp']
+[2024-10-15 15:48:42,323][anemoi.training.diagnostics.callbacks][INFO] - Using precip histogram plotting method for fields: ['tp', 'cp']

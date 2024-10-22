@@ -1,5 +1,5 @@
 dataset: anemoi-local-gcp-sample-zarr.zarr
-graph: anemoi-local-gcp-sample-zarr-graph.pt
+graph: anemoi-local-gcp-sample-zarr-graph_n320.pt
 checkpoint:
   every_n_epochs: anemoi-by_epoch-epoch_{epoch:03d}-step_{step:06d}
   every_n_train_steps: anemoi-by_step-epoch_{epoch:03d}-step_{step:06d}

@@ -46,7 +46,7 @@ rollout:
   # maximum rollout to use
   max: 1
 
-max_epochs: 200
+max_epochs: 10 #<+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ SC
 lr:
   rate: 0.625e-4 #local_lr
   iterations: 300000

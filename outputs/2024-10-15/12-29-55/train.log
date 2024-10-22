@@ -1,0 +1,5 @@
+[2024-10-15 12:29:56,099][anemoi.training.train.train][INFO] - Run id: 1aaf467e-8459-4e8d-b02b-b8b972d55bca
+[2024-10-15 12:29:56,101][anemoi.training.data.datamodule][INFO] - Timeincrement set to 1 for data with frequency, 6h, and timestep, 6h
+[2024-10-15 12:29:56,114][anemoi.training.diagnostics.callbacks][INFO] - Using defined accumulation colormap for fields: ['tp', 'cp']
+[2024-10-15 12:29:56,115][anemoi.training.diagnostics.callbacks][INFO] - Using precip histogram plotting method for fields: ['tp', 'cp']
+[2024-10-15 12:30:01,516][anemoi.graphs.nodes.builders.from_file][INFO] - Reading the dataset from /pscratch/sd/s/schin/pipeline/anemoi-pipeline/anemoi-local-gcp-sample-zarr.zarr.

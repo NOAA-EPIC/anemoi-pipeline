@@ -1,6 +1,6 @@
-data: ??? # Location of where the anemoi-formatted zarr is saved within.
+data: /pscratch/sd/s/schin/pipeline/anemoi-pipeline # Location of where the anemoi-formatted zarr is saved within.
 grids: ???
-output: ??? # Location of where to save the training log.
+output: /pscratch/sd/s/schin/pipeline/anemoi-pipeline/ # / # Location of where to save the training log.
 logs:
   base: ${hardware.paths.output}logs/
   wandb: ${hardware.paths.logs.base}

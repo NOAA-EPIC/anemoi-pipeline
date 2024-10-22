@@ -343,7 +343,7 @@ class AnemoiTrainer:
             callbacks=self.callbacks,
             deterministic=self.config.training.deterministic,
             detect_anomaly=self.config.diagnostics.debug.anomaly_detection,
-            strategy=self.strategy,
+            strategy='ddp_notebook', # 'self.strategy' # <++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ SC
             devices=self.config.hardware.num_gpus_per_node,
             num_nodes=self.config.hardware.num_nodes,
             precision=self.config.training.precision,
@@ -360,7 +360,7 @@ class AnemoiTrainer:
             # we have our own DDP-compliant sampler logic baked into the dataset
             use_distributed_sampler=False,
             profiler=self.profiler,
-            enable_progress_bar=self.config.diagnostics.enable_progress_bar,
+            enable_progress_bar=self.config.diagnostics.enable_progress_bar
         )
         
         print("*self.model", self.model)

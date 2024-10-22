@@ -98,7 +98,6 @@ class AnemoiDatasetsDataModule(pl.LightningDataModule):
             self.config.dataloader.training.end = self.config.dataloader.validation.start - 1
 
     def _check_resolution(self, resolution: str) -> None:
-        print("*resolution.lower(): \n", resolution.lower())
         assert (
             self.config.data.resolution.lower() == resolution.lower()
         ), f"Network resolution {self.config.data.resolution=} does not match dataset resolution {resolution=}"
@@ -188,8 +187,8 @@ class AnemoiDatasetsDataModule(pl.LightningDataModule):
         print("*model_comm_num_groups: \n", self.model_comm_num_groups)
         print("*shuffle: \n", shuffle)
         print("*label: \n", label)
-        print("*data.resolution", data.resolution)
-        self._check_resolution(data.resolution)
+        #print("*data.resolution", data.resolution) #<++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ SC
+        #self._check_resolution(data.resolution)    #<++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ SC
         return data
 
     def _get_dataloader(self, ds: NativeGridDataset, stage: str) -> DataLoader:

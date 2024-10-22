@@ -1,0 +1,334 @@
+data:
+  format: zarr
+  resolution: n320
+  frequency: 6h
+  timestep: 6h
+  forcing:
+  - 2m_temperature
+  - 10m_u_component_of_wind
+  - 10m_v_component_of_wind
+  diagnostic:
+  - surface_pressure
+  remapped: null
+  normalizer:
+  - 2m_temperature
+  - 10m_u_component_of_wind
+  - 10m_v_component_of_wind
+dataloader:
+  prefetch_factor: 2
+  num_workers:
+    training: 8
+    validation: 8
+    test: 8
+    predict: 8
+  batch_size:
+    training: 2
+    validation: 4
+    test: 4
+    predict: 4
+  limit_batches:
+    training: null
+    validation: null
+    test: 20
+    predict: 20
+  dataset: ${hardware.paths.data}/${hardware.files.dataset}
+  training:
+    dataset: ${dataloader.dataset}
+    start: '2020-12-31 00:00:00'
+    end: '2021-01-20 23:00:00'
+    frequency: ${data.frequency}
+    drop: []
+  validation:
+    dataset: ${dataloader.dataset}
+    start: '2021-01-21 00:00:00'
+    end: '2021-01-24 23:00:00'
+    frequency: ${data.frequency}
+    drop: []
+  test:
+    dataset: ${dataloader.dataset}
+    start: '2021-01-25 00:00:00'
+    end: '2021-02-01 23:00:00'
+    frequency: ${data.frequency}
+diagnostics:
+  eval:
+    enabled: false
+    rollout: 12
+    frequency: 20
+  plot:
+    enabled: true
+    asynchronous: true
+    frequency: 750
+    sample_idx: 0
+    per_sample: 6
+    parameters:
+    - z_500
+    - t_850
+    - u_850
+    - v_850
+    - 2t
+    - 10u
+    - 10v
+    - sp
+    - tp
+    - cp
+    accumulation_levels_plot:
+    - 0
+    - 0.05
+    - 0.1
+    - 0.25
+    - 0.5
+    - 1
+    - 1.5
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 100
+    cmap_accumulation:
+    - '#ffffff'
+    - '#04e9e7'
+    - '#019ff4'
+    - '#0300f4'
+    - '#02fd02'
+    - '#01c501'
+    - '#008e00'
+    - '#fdf802'
+    - '#e5bc00'
+    - '#fd9500'
+    - '#fd0000'
+    - '#d40000'
+    - '#bc0000'
+    - '#f800fd'
+    precip_and_related_fields:
+    - tp
+    - cp
+    parameters_histogram:
+    - z_500
+    - tp
+    - 2t
+    - 10u
+    - 10v
+    parameters_spectrum:
+    - z_500
+    - tp
+    - 2t
+    - 10u
+    - 10v
+    parameter_groups:
+      moisture:
+      - tp
+      - cp
+      - tcw
+      sfc_wind:
+      - 10u
+      - 10v
+    learned_features: false
+  debug:
+    anomaly_detection: false
+  profiler: false
+  checkpoint:
+    every_n_minutes:
+      save_frequency: 30
+      num_models_saved: 3
+    every_n_epochs:
+      save_frequency: 1
+      num_models_saved: -1
+    every_n_train_steps:
+      save_frequency: null
+      num_models_saved: 0
+  log:
+    wandb:
+      enabled: false
+      offline: false
+      log_model: false
+      project: Anemoi
+      entity: ???
+      gradients: false
+      parameters: false
+    tensorboard:
+      enabled: false
+    mlflow:
+      enabled: false
+      offline: false
+      authentication: false
+      log_model: false
+      tracking_uri: ???
+      experiment_name: anemoi-debug
+      project_name: Anemoi
+      system: true
+      terminal: true
+      run_name: null
+      on_resume_create_child: true
+    interval: 100
+  enable_progress_bar: true
+  print_memory_summary: false
+hardware:
+  paths:
+    data: /pscratch/sd/s/schin/pipeline/anemoi-pipeline
+    grids: ???
+    output: /pscratch/sd/s/schin/pipeline/anemoi-pipeline/
+    logs:
+      base: ${hardware.paths.output}logs/
+      wandb: ${hardware.paths.logs.base}
+      mlflow: ${hardware.paths.logs.base}mlflow/
+      tensorboard: ${hardware.paths.logs.base}tensorboard/
+    checkpoints: ${hardware.paths.output}checkpoint/
+    plots: ${hardware.paths.output}plots/
+    profiler: ${hardware.paths.output}profiler/
+    graph: ${hardware.paths.output}graphs/
+  files:
+    dataset: anemoi-local-gcp-sample-zarr.zarr
+    graph: anemoi-local-gcp-sample-zarr-graph_n320.pt
+    checkpoint:
+      every_n_epochs: anemoi-by_epoch-epoch_{epoch:03d}-step_{step:06d}
+      every_n_train_steps: anemoi-by_step-epoch_{epoch:03d}-step_{step:06d}
+      every_n_minutes: anemoi-by_time-epoch_{epoch:03d}-step_{step:06d}
+    warm_start: null
+  accelerator: auto
+  num_gpus_per_node: 1
+  num_nodes: 1
+  num_gpus_per_model: 1
+graph:
+  overwrite: true
+  data: data
+  hidden: hidden
+  nodes:
+    data:
+      node_builder:
+        _target_: anemoi.graphs.nodes.ZarrDatasetNodes
+        dataset: ${dataloader.dataset}
+      attributes: ${graph.attributes.nodes}
+    hidden:
+      node_builder:
+        _target_: anemoi.graphs.nodes.TriNodes
+        resolution: 5
+      attributes: ${graph.attributes.nodes}
+  edges:
+  - source_name: ${graph.data}
+    target_name: ${graph.hidden}
+    edge_builder:
+      _target_: anemoi.graphs.edges.CutOffEdges
+      cutoff_factor: 0.6
+    attributes: ${graph.attributes.edges}
+  - source_name: ${graph.hidden}
+    target_name: ${graph.hidden}
+    edge_builder:
+      _target_: anemoi.graphs.edges.MultiScaleEdges
+      x_hops: 1
+    attributes: ${graph.attributes.edges}
+  - source_name: ${graph.hidden}
+    target_name: ${graph.data}
+    edge_builder:
+      _target_: anemoi.graphs.edges.KNNEdges
+      num_nearest_neighbours: 3
+    attributes: ${graph.attributes.edges}
+  attributes:
+    nodes:
+      area_weight:
+        _target_: anemoi.graphs.nodes.attributes.AreaWeights
+        norm: unit-max
+    edges:
+      edge_length:
+        _target_: anemoi.graphs.edges.attributes.EdgeLength
+        norm: unit-std
+      edge_dirs:
+        _target_: anemoi.graphs.edges.attributes.EdgeDirection
+        norm: unit-std
+model:
+  activation: GELU
+  num_channels: 1024
+  model:
+    _target_: anemoi.models.models.encoder_processor_decoder.AnemoiModelEncProcDec
+  processor:
+    _target_: anemoi.models.layers.processor.GraphTransformerProcessor
+    _convert_: all
+    activation: ${model.activation}
+    trainable_size: ${model.trainable_parameters.hidden2hidden}
+    sub_graph_edge_attributes: ${model.attributes.edges}
+    num_layers: 16
+    num_chunks: 2
+    mlp_hidden_ratio: 4
+    num_heads: 16
+    dropout_p: 0.0
+  encoder:
+    _target_: anemoi.models.layers.mapper.GraphTransformerForwardMapper
+    _convert_: all
+    trainable_size: ${model.trainable_parameters.data2hidden}
+    sub_graph_edge_attributes: ${model.attributes.edges}
+    activation: ${model.activation}
+    num_chunks: 1
+    mlp_hidden_ratio: 4
+    num_heads: 16
+  decoder:
+    _target_: anemoi.models.layers.mapper.GraphTransformerBackwardMapper
+    _convert_: all
+    trainable_size: ${model.trainable_parameters.hidden2data}
+    sub_graph_edge_attributes: ${model.attributes.edges}
+    activation: ${model.activation}
+    num_chunks: 1
+    mlp_hidden_ratio: 4
+    num_heads: 16
+  trainable_parameters:
+    data: 8
+    hidden: 8
+    data2hidden: 8
+    hidden2data: 8
+    hidden2hidden: 8
+  attributes:
+    edges:
+    - edge_length
+    - edge_dirs
+    nodes: []
+  node_loss_weight: area_weight
+training:
+  run_id: null
+  fork_run_id: null
+  load_weights_only: null
+  deterministic: false
+  precision: 16-mixed
+  multistep_input: 2
+  accum_grad_batches: 1
+  gradient_clip:
+    val: 32.0
+    algorithm: value
+  swa:
+    enabled: false
+    lr: 0.0001
+  zero_optimizer: false
+  loss_gradient_scaling: false
+  rollout:
+    start: 1
+    epoch_increment: 0
+    max: 1
+  max_epochs: 10
+  lr:
+    rate: 6.25e-05
+    iterations: 300000
+    min: 3.0e-07
+  loss_scaling:
+    default: 1
+    pl:
+      q: 0.6
+      t: 6
+      u: 0.8
+      v: 0.5
+      w: 0.001
+      z: 12
+    sfc:
+      sp: 10
+      10u: 0.1
+      10v: 0.1
+      2d: 0.5
+      tp: 0.025
+      cp: 0.0025
+  metrics:
+  - z_500
+  - t_850
+  - u_850
+  - v_850
+  pressure_level_scaler:
+    _target_: anemoi.training.data.scaling.ReluPressureLevelScaler
+    minimum: 0.2
+    slope: 0.001

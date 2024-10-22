@@ -5,6 +5,11 @@ nodes:
     node_builder: # how to generate data node
       _target_: anemoi.graphs.nodes.ZarrDatasetNodes
       dataset: anemoi-local-gcp-sample-zarr.zarr
+    #attributes:
+    #  weights: anemoi.graphs.nodes.attributes.AreaWeights
+    #    _target_: #anemoi.graphs.nodes.attributes.BaseWeights => TypeError("Can't instantiate abstract class BaseWeights with abstract method get_raw_values") # anemoi.graphs.nodes.attributes.UniformWeights => Results in: ValueError: Duplicate generators present.## anemoi.graphs.nodes.attributes.AreaWeights => Results in: ValueError: Duplicate generators present.
+ # anemoi.graphs.nodes.weights.Area DNE
+     #   norm: unit-max
   hidden:
     node_builder: # how to generate hidden node
       _target_: anemoi.graphs.nodes.ZarrDatasetNodes
