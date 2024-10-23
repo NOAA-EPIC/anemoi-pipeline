@@ -2,7 +2,14 @@
 
 ## Quick Start:
 
-__1) Pull in the latest branch/version of the Anemoi modules of interest & save them under your local _/anemoi_ folder:__
+__1) Setup conda environment based on the following environment file:
+
+- _anemoi_pipeline.yaml_
+
+<br />
+<br />
+
+__2) Pull in the latest branch/version of the Anemoi modules of interest & save them under your local _/anemoi_ folder:__
 
 - _anemoi-datasets_ (https://github.com/ecmwf/anemoi-datasets)
      
@@ -24,7 +31,7 @@ _*Note: Versions of the following repos being tested against era5 can be found u
 <br />
 <br />
 
-__2) Generate a subset of ERA5 via:__
+__3) Generate a subset of ERA5 via:__
 
 - _Generate_ERA5_Data_Subset.ipynb_
 
@@ -33,7 +40,7 @@ _*Note: Generated ERA5 data sample will be saved under './sample_data/gcp_era5_s
 <br />
 <br />
 
-__3) Run each individual anemoi module as mentioned under the following demo:__
+__4) Run each individual anemoi module as mentioned under the following demo:__
    
 - _Pipeline_Demo.ipynb_
      
