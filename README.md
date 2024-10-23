@@ -2,24 +2,24 @@
 
 ## Quick Start:
 
-__1) Pull in the latest branch/version of the Anemoi modules of interest & save under the /anemoi folder on your local:__
+__1) Pull in the latest branch/version of the Anemoi modules of interest & save them under your local _/anemoi_ folder:__
 
-- anemoi-datasets (https://github.com/ecmwf/anemoi-datasets)
+- _anemoi-datasets_ (https://github.com/ecmwf/anemoi-datasets)
      
-- anemoi-graphs (https://github.com/ecmwf/anemoi-graphs)
+- _anemoi-graphs_ (https://github.com/ecmwf/anemoi-graphs)
      
-- anemoi-models (https://github.com/ecmwf/anemoi-models)
+- _anemoi-models_ (https://github.com/ecmwf/anemoi-models)
      
-- anemoi-training (https://github.com/ecmwf/anemoi-training)
+- _anemoi-training_ (https://github.com/ecmwf/anemoi-training)
      
-- anemoi-utils (https://github.com/ecmwf/anemoi-utils)
+- _anemoi-utils_ (https://github.com/ecmwf/anemoi-utils)
 
 _*Note: Versions of the following repos being tested against era5 can be found under [https://github.com/NOAA-EPIC/anemoi-pipeline/tree/era5/ane](https://github.com/NOAA-EPIC/anemoi-pipeline/tree/era5/anemoi):_
-- anemoi-datasets (main) - pulled on 10/07/24 1:08pm ET
-- anemoi-utils (develop) - pulled on 10/07/24 1:08pm ET
-- anemoi-graphs (develop) - pulled on 10/07/24 1:08pm ET
-- anemoi-models (develop) - pulled on 10/07/24 1:08pm ET
-
+- _anemoi-datasets (main)_ - pulled on 10/07/24 1:08pm ET
+- _anemoi-utils (develop)_ - pulled on 10/07/24 1:08pm ET
+- _anemoi-graphs (develop)_ - pulled on 10/07/24 1:08pm ET
+- _anemoi-training (develop)_ - pulled on 10/07/24 1:08pm ET
+- _anemoi-models (develop)_ - pulled on 10/07/24 1:08pm ET
   
 __2) Generate a subset of ERA5 via:__
 
