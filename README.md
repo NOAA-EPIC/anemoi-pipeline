@@ -2,7 +2,9 @@
 
 ## Quick Start:
 
-__1) Clone main branch of this repo to local. The _era5_ branch and _ufs-replay_ branch are leveraging off of the current main branch at this moment.__
+__1) Clone main branch of this repo to local.__
+
+_Note: The _era5_ branch and _ufs-replay_ branch are leveraging off of the current main branch at this moment._
 
 <br />
 
