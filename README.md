@@ -10,7 +10,7 @@ _Note: The _era5_ branch and _ufs-replay_ branch are leveraging off of the curre
 
 <br />
 
-__2) Setup conda environment with the following conda environment YAML file:__
+### 2) Setup conda environment with the following conda environment YAML file:
 
 - _/env/anemoi_pipeline.yaml_
 
@@ -41,7 +41,7 @@ _*Note: Versions of the following repos being tested against era5 can be found u
 <br />
 <br />
 
-__4) Generate a subset of ERA5 via:__
+### 4) Generate a subset of ERA5 via:
 
 - _Generate_ERA5_Data_Subset.ipynb_
 
@@ -52,7 +52,7 @@ _*Note: Generated ERA5 data sample will be saved under '/sample_data/gcp_era5_su
 <br />
 <br />
 
-__5) Run each individual anemoi module as mentioned under the following demo:__
+### 5) Run each individual anemoi module as mentioned under the following demo:
    
 - _Pipeline_Demo.ipynb_
      
