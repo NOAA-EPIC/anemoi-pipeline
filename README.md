@@ -2,7 +2,7 @@
 
 ## Quick Start:
 
-1) __Pull in the latest branch/version of the Anemoi modules of interest & save under the /anemoi folder on your local:__
+__1) Pull in the latest branch/version of the Anemoi modules of interest & save under the /anemoi folder on your local:__
 
 - anemoi-datasets (https://github.com/ecmwf/anemoi-datasets)
      
@@ -19,14 +19,16 @@ _*Note: Versions of the following repos being tested against era5 can be found u
 - anemoi-utils (develop) - pulled on 10/07/24 1:08pm ET
 - anemoi-graphs (develop) - pulled on 10/07/24 1:08pm ET
 - anemoi-models (develop) - pulled on 10/07/24 1:08pm ET
+
   
-2) __Generate a subset of ERA5 via:__
+__2) Generate a subset of ERA5 via:__
 
 - _Generate_ERA5_Data_Subset.ipynb_
 
 _*Note: Data sample will be saved to './sample_data/gcp_era5_subset.zarr'_
+
      
-3) ___Run each individual anemoi module as mentioned under the following demo:__
+__3) Run each individual anemoi module as mentioned under the following demo:__
    
 - _Pipeline_Demo.ipynb_
      
