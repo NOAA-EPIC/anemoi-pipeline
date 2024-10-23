@@ -4,6 +4,8 @@
 
 __1) Clone main branch of this repo to local.__
 
+<br />
+
 _Note: The _era5_ branch and _ufs-replay_ branch are leveraging off of the current main branch at this moment._
 
 <br />
@@ -27,6 +29,8 @@ __3) Pull in the latest branch/version of the Anemoi modules of interest & save 
      
 - _anemoi-utils_ (https://github.com/ecmwf/anemoi-utils)
 
+<br />
+
 _*Note: Versions of the following repos being tested against era5 can be found under [https://github.com/NOAA-EPIC/anemoi-pipeline/tree/era5/ane](https://github.com/NOAA-EPIC/anemoi-pipeline/tree/era5/anemoi):_
 - _anemoi-datasets (main)_ - pulled on 10/07/24 1:08pm ET
 - _anemoi-utils (develop)_ - pulled on 10/07/24 1:08pm ET
@@ -40,6 +44,8 @@ _*Note: Versions of the following repos being tested against era5 can be found u
 __4) Generate a subset of ERA5 via:__
 
 - _Generate_ERA5_Data_Subset.ipynb_
+
+<br />
 
 _*Note: Generated ERA5 data sample will be saved under './sample_data/gcp_era5_subset.zarr'_
 
@@ -63,6 +69,8 @@ __5) Run each individual anemoi module as mentioned under the following demo:__
           - To inspect the generated graph, run the fourth cell under Demo II.
             
      - __Demo III: Training Module__
-          - To train GNN model type of interest based on the various configuration files required for training (refer to the listed configuration files in the Demo III), run all cells under Demo III. 
+          - To train GNN model type of interest based on the various configuration files required for training (refer to the listed configuration files in the Demo III), run all cells under Demo III.
+      
+<br />
 
 _*Note: If an ECMWF developer modifies a given anemoi module's list of "command" scripts, then new arguments for a given anemoi module may arise & this demo would have to accomodate for the change._
