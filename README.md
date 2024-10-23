@@ -2,9 +2,8 @@
 
 ## Quick Start:
 
-__1) Clone main branch of this repo to local.__
+__1) Clone main branch of this repo to local. ERA5 branch and Replay branch are leveraging off of the current main branch at this moment__
 
-<br />
 <br />
 
 __2) Setup conda environment based on the following conda environment YAML file:__
