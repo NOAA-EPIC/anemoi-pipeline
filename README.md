@@ -17,7 +17,7 @@ _Note: The _era5_ branch and _ufs-replay_ branch are leveraging off of the curre
 <br />
 <br />
 
-__3) Pull in the latest branch/version of the Anemoi modules of interest & save them under your local _/anemoi_ folder:__
+### 3) Pull in the latest branch/version of the Anemoi modules of interest & save them under your local _/anemoi_ folder:
 
 - _anemoi-datasets_ (https://github.com/ecmwf/anemoi-datasets)
      
