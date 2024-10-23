@@ -38,16 +38,15 @@ __3) Run each individual anemoi module as mentioned under the following demo:__
 - _Pipeline_Demo.ipynb_
      
      - __Demo I: Dataset Module__
-          - To convert multi-dimension dataset (e.g. zarr) saved under _/sample_data/gcp_era5_subset.zarr_ to an Anemoi-Formatted Zarr based on the configuration file set under _/datasets_configs_ (e.g. _/datasets_configs/local-gcp-sample-zarr.yaml_), run first two cells of Demo I.
+          - To convert multi-dimension dataset (e.g. zarr) saved under _/sample_data/gcp_era5_subset.zarr_ to an Anemoi-Formatted Zarr based on the configuration file set under _/datasets_configs_ (e.g. _/datasets_configs/local-gcp-sample-zarr.yaml_), run first two cells under Demo I.
           - Also, could leverage the Anemoi-Formatted Zarr sample being tested on Perlmutter, which is located under: _/pscratch/sd/s/schin/pipeline/anemoi-pipeline/anemoi-local-gcp-sample-zarr.zarr_
            
      - __Demo II: Graph Module__
-          - Generate the Graph based on the configuration file residing under _/graphs_configs_ (e.g. _/graphs_configs/local_gcp_encoder_processor_decoder_connect_bw_hiddens_recipe.yaml_)
-          - To generate graph, run the first two cells of Demo II.
-          - To inspect the generated graph, run the fourth cell of Demo II.
+          - Generate the neural network graph based on the configuration file residing under _/graphs_configs_ (e.g. _/graphs_configs/local_gcp_encoder_processor_decoder_connect_bw_hiddens_recipe.yaml_)
+          - To generate graph, run the first two cells under Demo II.
+          - To inspect the generated graph, run the fourth cell under Demo II.
             
      - __Demo III: Training Module__
-          - Train GNN model type of interest based on the various configuration files required for training (refer to the listed configuration files in the Demo III).
-          - Run all cells in Demo III. 
+          - To train GNN model type of interest based on the various configuration files required for training (refer to the listed configuration files in the Demo III), run all cells under Demo III. 
 
 _*Note: If an ECMWF developer modifies a given anemoi module's list of "command" scripts, then new arguments for a given anemoi module may arise & this demo would have to accomodate for the change._
