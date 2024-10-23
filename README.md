@@ -25,7 +25,7 @@ __2) Generate a subset of ERA5 via:__
 
 - _Generate_ERA5_Data_Subset.ipynb_
 
-_*Note: Data sample will be saved to './sample_data/gcp_era5_subset.zarr'_
+_*Note: Generated ERA5 data sample will be saved under './sample_data/gcp_era5_subset.zarr'_
 
      
 __3) Run each individual anemoi module as mentioned under the following demo:__
@@ -45,4 +45,4 @@ __3) Run each individual anemoi module as mentioned under the following demo:__
           - Train GNN model type of interest based on the various configuration files required for training (refer to the listed configuration files in the Demo III).
           - Run all cells in Demo III. 
 
-_*Note: If an ECMWF developer makes a modification to a given module's list of "command" scripts, then new arguments for a given anemoi module may arise and demo would have to accomodate for the change._
+_*Note: If an ECMWF developer modifies a given anemoi module's list of "command" scripts, then new arguments for a given anemoi module may arise & this demo would have to accomodate for the change._
