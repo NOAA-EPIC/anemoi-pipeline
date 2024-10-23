@@ -52,7 +52,7 @@ _*Note: Generated ERA5 data sample will be saved under '/sample_data/gcp_era5_su
 <br />
 <br />
 
-### 5) Run each individual anemoi module as mentioned under the following demo:
+### 5) To execute each anemoi module, run each demo mentioned under the following notebook:
    
 - _Pipeline_Demo.ipynb_
      
