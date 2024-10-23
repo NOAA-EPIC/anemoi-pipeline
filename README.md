@@ -2,7 +2,7 @@
 
 ## Quick Start:
 
-__1) Clone main branch of this repo to local.__
+### 1) Clone main branch of this repo to local.
 
 <br />
 
@@ -10,7 +10,7 @@ _Note: The _era5_ branch and _ufs-replay_ branch are leveraging off of the curre
 
 <br />
 
-__2) Setup conda environment based on the following conda environment YAML file:__
+__2) Setup conda environment with the following conda environment YAML file:__
 
 - _/env/anemoi_pipeline.yaml_
 
@@ -47,7 +47,7 @@ __4) Generate a subset of ERA5 via:__
 
 <br />
 
-_*Note: Generated ERA5 data sample will be saved under './sample_data/gcp_era5_subset.zarr'_
+_*Note: Generated ERA5 data sample will be saved under '/sample_data/gcp_era5_subset.zarr'_
 
 <br />
 <br />
