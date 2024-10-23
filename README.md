@@ -1,5 +1,9 @@
 # anemoi-pipeline
 
+Anemoi-Converted dataset on Perlmutter:
+- /pscratch/sd/s/schin/pipeline/anemoi-pipeline/anemoi-local-gcp-sample-zarr.zarr
+    
+
 1) Pull in the latest branch/version of the Anemoi modules of interest & save under the /anemoi folder on your local:
    - anemoi-datasets (https://github.com/ecmwf/anemoi-datasets)
      
@@ -19,8 +23,10 @@
   
 2) Generate a subset of ERA5 via:
    - Generate_ERA5_Data_Subset.ipynb
+
+*Note: Data will be saved to './sample_data/gcp_era5_subset.zarr'
      
 3) Run each individual anemoi module via:
    - Pipeline_Demo.ipynb
   
-*Note: New arguments for a given anemoi module may arise if an ECMWF developer makes a modification to a given module's list of "command" scripts. 
+*Note: If an ECMWF developer makes a modification to a given module's list of "command" scripts, then new arguments for a given anemoi module may arise and demo would have to accomodate for the change.
