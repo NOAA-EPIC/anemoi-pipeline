@@ -9,7 +9,7 @@ __1) Setup conda environment based on the following conda environment YAML file:
 <br />
 <br />
 
-__2) Clone [main](https://github.com/NOAA-EPIC/anemoi-pipeline/tree/main) to local.__
+__2) Clone main branch of this repo to local.__
 
 <br />
 <br />
