@@ -3,15 +3,15 @@
 ## Quick Start:
 
 1) Pull in the latest branch/version of the Anemoi modules of interest & save under the /anemoi folder on your local:
-   - anemoi-datasets (https://github.com/ecmwf/anemoi-datasets)
+- anemoi-datasets (https://github.com/ecmwf/anemoi-datasets)
      
-   - anemoi-graphs (https://github.com/ecmwf/anemoi-graphs)
+- anemoi-graphs (https://github.com/ecmwf/anemoi-graphs)
      
-   - anemoi-models (https://github.com/ecmwf/anemoi-models)
+- anemoi-models (https://github.com/ecmwf/anemoi-models)
      
-   - anemoi-training (https://github.com/ecmwf/anemoi-training)
+- anemoi-training (https://github.com/ecmwf/anemoi-training)
      
-   - anemoi-utils (https://github.com/ecmwf/anemoi-utils)
+- anemoi-utils (https://github.com/ecmwf/anemoi-utils)
 
 *Note: Versions of the following repos being tested against era5 can be found under [https://github.com/NOAA-EPIC/anemoi-pipeline/tree/era5/ane](https://github.com/NOAA-EPIC/anemoi-pipeline/tree/era5/anemoi):
 - anemoi-datasets (main) - pulled on 10/07/24 1:08pm ET
