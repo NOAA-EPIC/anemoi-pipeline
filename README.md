@@ -2,7 +2,7 @@
 
 ## Quick Start:
 
-__1) Setup conda environment based on the following environment file:
+__1) Setup conda environment based on the following environment file:__
 
 - _anemoi_pipeline.yaml_
 
