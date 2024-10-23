@@ -2,14 +2,14 @@
 
 ## Quick Start:
 
-__1) Setup conda environment based on the following conda environment YAML file:__
+__1) Clone main branch of this repo to local.__
+
+<br />
+<br />
+
+__2) Setup conda environment based on the following conda environment YAML file:__
 
 - _/env/anemoi_pipeline.yaml_
-
-<br />
-<br />
-
-__2) Clone main branch of this repo to local.__
 
 <br />
 <br />
