@@ -20,14 +20,17 @@ _*Note: Versions of the following repos being tested against era5 can be found u
 - _anemoi-graphs (develop)_ - pulled on 10/07/24 1:08pm ET
 - _anemoi-training (develop)_ - pulled on 10/07/24 1:08pm ET
 - _anemoi-models (develop)_ - pulled on 10/07/24 1:08pm ET
-  
+
+<br />
+<br />
 __2) Generate a subset of ERA5 via:__
 
 - _Generate_ERA5_Data_Subset.ipynb_
 
 _*Note: Generated ERA5 data sample will be saved under './sample_data/gcp_era5_subset.zarr'_
 
-     
+<br />
+<br />
 __3) Run each individual anemoi module as mentioned under the following demo:__
    
 - _Pipeline_Demo.ipynb_
