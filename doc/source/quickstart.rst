@@ -13,11 +13,16 @@ Quick Start: Running Anemoi Pipeline
 
       The ``era5`` and ``ufs_replay`` branches are tracking the ``main`` branch. 
 
-#. Set up the conda environment with the following conda environment YAML file:
+#. Set up the conda environment using the ``env/anemoi_pipeline.yaml`` conda environment file:
 
    .. code-block:: console
       
-      /env/anemoi_pipeline.yaml
+      cd anemoi_pipeline
+      git checkout era5
+      module load conda
+      conda env create --name anemoi_pipeline --file=env/anemoi_pipeline.yaml # this uses pip and takes a few minutes
+      conda env list # this shows where the new conda env file lives
+      conda activate anemo_pipeline
 
 #. Pull in the latest branch/version of the Anemoi modules of interest & save them under your local ``/anemoi`` folder:
 
