@@ -1,0 +1,6 @@
+[tool.pytest.ini_options]
+markers = [
+    "integration: test requires access to an external resource (i.e., cloud dataset)",
+]
+log_cli = true
+addopts = "-s"
