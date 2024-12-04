@@ -5,21 +5,10 @@ import xarray as xr
 import logging
 import sys
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s %(message)s",
-    filename="anemoi-pipeline.log",
-    filemode="w",
-)
-root_logger = logging.getLogger("anemoi-pipeline")
-root_logger.info("Hello World!")
-stream_handler = logging.StreamHandler(stream=sys.stdout)
-root_logger.addHandler(stream_handler)
-logger = root_logger.getChild(__name__)
-
 
 @pytest.mark.integration
-def test():
+@pytest.mark.slow
+def test() -> None:
     gs_url = "gs://gcp-public-data-arco-era5/ar/1959-2022-1h-360x181_equiangular_with_poles_conservative.zarr"
     chunk_sz = 48
     gcp_ar_era5_subset = xr.open_zarr(
