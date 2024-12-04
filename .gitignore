@@ -2,3 +2,4 @@
 .idea
 /sample_data/
 /anemoi-local-gcp-sample-zarr.zarr/
+/anemoi-local-gcp-sample-zarr-graph-output-plots/
